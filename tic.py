@@ -7,12 +7,12 @@ class Game:
     def __repr__(self):
         return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n'
 
-    def move(self, boardLocation, row1, playertoken):
-        if boardLocation in row1:
-            row1[boardLocation] = playertoken
+    def move(self, boardLocation, playertoken):
+        if boardLocation in self.row1:
+            self.row1[boardLocation] = playertoken
         else:
             print('no in list1')
-        return row1
+        return self.row1
     
 
 
@@ -58,7 +58,7 @@ def main():
 
     while True: 
         player1Placement = input("Where do you want to place your symbol? ")
-        player1move = theGame.move(player1Name, player1Placement, player1Token)
+        player1move = theGame.move(player1Placement, player1Token)
         print(theGame.__repr__())
        
 
