@@ -8,12 +8,10 @@ class Game:
         return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n'
 
     def move(self, boardLocation, playertoken):
-        if boardLocation in self.row1:
-            self.row1[boardLocation] = playertoken
-        else:
-            print('no in list1')
+        for n, i in enumerate(self.row1):
+            if i == boardLocation:
+                self.row1[n] = playertoken
         return self.row1
-    
 
 
         '''
@@ -60,6 +58,12 @@ def main():
         player1Placement = input("Where do you want to place your symbol? ")
         player1move = theGame.move(player1Placement, player1Token)
         print(theGame.__repr__())
+
+        player2Placement = input("Where do you want to place your symbol? ")
+        player1move = theGame.move(player2Placement, player2Token)
+        print(theGame.__repr__())
+
+        
        
 
 main()
