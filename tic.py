@@ -1,5 +1,5 @@
-class game:
-    def __init__(self, row1 = ['','',''], row2 = ['','',''], row3 = ['','','']):
+class Game:
+    def __init__(self, row1 = ['1','2','3'], row2 = ['4','5','6'], row3 = ['7','8','9']):
         self.row1 = row1
         self.row2 = row2
         self.row3 = row3
@@ -7,17 +7,30 @@ class game:
     def __repr__(self):
         return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n'
 
-    def move(self, row, location, player):
-        if row == 1:
+    def move(self, boardLocation, row1, playertoken):
+        if boardLocation in row1:
+            row1[boardLocation] = playertoken
+        else:
+            print('no in list1')
+        return row1
+    
+
+
+        '''
+        if boardLocation inside row1
+            replace boardLocation with symbol
+            
+        '''
+        
             
 
 
 
-    #def calcWinner(self):
+
     
 
     
-class player:
+class Player:
     def __init__(self, player, token):
         self.player = player
         self.token = token 
@@ -31,15 +44,23 @@ class player:
 
     
 def main():
+    theGame = Game()
     #get player 1 info
-   player1Name = player.getPlayer(player)
-   player1Token = player.getToken(player)
+    player1Name = Player.getPlayer(Player)
+    player1Token = Player.getToken(Player)
+  
 
    #get player 2 info
-   player2Name = player.getPlayer(player)
-   player2Token = player.getToken(player)
+    #player2Name = Player.getPlayer(Player)
+    #player2Token = Player.getToken(Player)
 
-   while True: 
+    
+
+    while True: 
+        player1Placement = input("Where do you want to place your symbol? ")
+        player1move = theGame.move(player1Name, player1Placement, player1Token)
+        print(theGame.__repr__())
+       
 
 main()
 
