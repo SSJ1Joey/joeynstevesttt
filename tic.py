@@ -1,17 +1,16 @@
 class Game:
-    def __init__(self, row1 = ['1','2','3'], row2 = ['4','5','6'], row3 = ['7','8','9']):
-        self.row1 = row1
-        self.row2 = row2
-        self.row3 = row3
+    def __init__(self, row = ['1','2','3','4','5','6','7','8','9']):
+        self.row = row
+        
    
     def __repr__(self):
-        return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n'
+        return f' {self.row[0]} | {self.row[1]} | {self.row[2]}\n {self.row[3]} | {self.row[4]} | {self.row[5]}\n {self.row[6]} | {self.row[7]} | {self.row[8]}\n'
 
     def move(self, boardLocation, playertoken):
-        for n, i in enumerate(self.row1):
+        for n, i in enumerate(self.row):
             if i == boardLocation:
-                self.row1[n] = playertoken
-        return self.row1
+                self.row[n] = playertoken
+        return self.row
 
 
         '''
