@@ -11,13 +11,27 @@ class Game:
             if i == boardLocation:
                 self.row[n] = playertoken
         return self.row
+    def calcWinner(self, token):
+        if self.row[0] == token and self.row[1] == token and self.row[2] == token:
+            return True
+        elif self.row[3] == token and self.row[4] == token and self.row[5] == token:
+            return True
+        elif self.row[6] == token and self.row[7] == token and self.row[8] == token:
+            return True
+        elif self.row[0] == token and self.row[3] == token and self.row[6] == token:
+            return True
+        elif self.row[1] == token and self.row[4] == token and self.row[7] == token:
+            return True
+        elif self.row[2] == token and self.row[3] == token and self.row[8] == token:
+            return True
+        elif self.row[0] == token and self.row[4] == token and self.row[8] == token:
+            return True
+        elif self.row[2] == token and self.row[4] == token and self.row[6] == token:
+            return True
+        else:
+            return 
+    
 
-
-        '''
-        if boardLocation inside row1
-            replace boardLocation with symbol
-            
-        '''
         
             
 
@@ -47,20 +61,27 @@ def main():
     player1Token = Player.getToken(Player)
   
 
-   #get player 2 info
-    #player2Name = Player.getPlayer(Player)
-    #player2Token = Player.getToken(Player)
+    #get player 2 info
+    player2Name = Player.getPlayer(Player)
+    player2Token = Player.getToken(Player)
 
     
 
     while True: 
-        player1Placement = input("Where do you want to place your symbol? ")
+        player1Placement = input(f"{player1Name} where do you want to place your symbol? ")
         player1move = theGame.move(player1Placement, player1Token)
         print(theGame.__repr__())
 
-        player2Placement = input("Where do you want to place your symbol? ")
+        player1Win = theGame.calcWinner(player1Token)
+        print(player1Win)
+
+
+        player2Placement = input(f"{player2Name} where do you want to place your symbol? ")
         player1move = theGame.move(player2Placement, player2Token)
         print(theGame.__repr__())
+
+        player2Win = theGame.calcWinner(player2Token)
+        print(player2Win)
 
         
        
