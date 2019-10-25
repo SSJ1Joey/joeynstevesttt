@@ -5,10 +5,11 @@ class game:
         self.row3 = row3
    
     def __repr__(self):
-        return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n
+        return f' {self.row1[0]} | {self.row1[1]} | {self.row1[2]}\n {self.row2[0]} | {self.row2[1]} | {self.row2[2]}\n {self.row3[0]} | {self.row3[1]} | {self.row3[2]}\n'
 
-
-    #def move(self, row, location, player):
+    def move(self, row, location, player):
+        if row == 1:
+            
 
 
 
@@ -21,20 +22,27 @@ class player:
         self.player = player
         self.token = token 
     def getPlayer(self):
-        player = input("What is the name for Player 1? ")
+        player = input("What is the name for Player? ")
         return player
     def getToken(self):
-        token = input("What do you want your token to be, X or O?")
+        token = input("What do you want your token to be, X or O? ")
         return token 
 
 
     
-#def main():
-    #while True:
+def main():
+    #get player 1 info
+   player1Name = player.getPlayer(player)
+   player1Token = player.getToken(player)
 
+   #get player 2 info
+   player2Name = player.getPlayer(player)
+   player2Token = player.getToken(player)
 
-p1 = game()
-print(p1)
+   while True: 
+
+main()
+
 
 '''
 get player names
