@@ -29,18 +29,15 @@ class Game:
         elif self.row[2] == token and self.row[4] == token and self.row[6] == token:
             return True
         else:
+            return
+    def fullBoard(self):
+        tempList = ['1','2','3','4','5','6','7','8','9']
+        check = any(item in self.row for item in tempList)
+        if check is True:
             return 
-    
-
+        else:
+            return f'The board is full'       
         
-            
-
-
-
-
-    
-
-    
 class Player:
     def __init__(self, player, token):
         self.player = player
@@ -68,20 +65,27 @@ def main():
     
 
     while True: 
+        #player1 move
         player1Placement = input(f"{player1Name} where do you want to place your symbol? ")
         player1move = theGame.move(player1Placement, player1Token)
         print(theGame.__repr__())
 
+        #check if player1 won, or if board is full
         player1Win = theGame.calcWinner(player1Token)
         print(player1Win)
+        boardIsFull = theGame.fullBoard()
+        print(boardIsFull)
 
-
+        #player2 move
         player2Placement = input(f"{player2Name} where do you want to place your symbol? ")
         player1move = theGame.move(player2Placement, player2Token)
         print(theGame.__repr__())
 
+        #check if player2 won, or if board is full
         player2Win = theGame.calcWinner(player2Token)
         print(player2Win)
+        boardIsFull = theGame.fullBoard()
+        print(boardIsFull)
 
         
        
