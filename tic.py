@@ -7,12 +7,10 @@ class Game:
         return f' {self.row[0]} | {self.row[1]} | {self.row[2]}\n {self.row[3]} | {self.row[4]} | {self.row[5]}\n {self.row[6]} | {self.row[7]} | {self.row[8]}\n'
 
     def move(self, boardLocation, playertoken):
-        '''
-        tempList = ['1','2','3','4','5','6','7','8','9']
-        if boardLocation not in tempList:
-            print( f'Space already taken')
-            return
-        '''    
+        if boardLocation not in self.row:
+            print('Space is already taken')
+            return f'Space already taken'
+        
         for n, i in enumerate(self.row):
             if i == boardLocation:
                 self.row[n] = playertoken
@@ -50,9 +48,11 @@ class Player:
     def __init__(self, player, token):
         self.player = player
         self.token = token 
+
     def getPlayer(self):
         player = input("What is the name for Player? ")
         return player
+        
     def getToken(self):
         token = input("What do you want your token to be, X or O? ")
         return token 
@@ -70,14 +70,20 @@ def main():
     player2Name = Player.getPlayer(Player)
     player2Token = 'O'
 
-    
+    #Print the board for players to see
+    print(theGame.__repr__())
 
-    
-
+#Game while loop
     while True: 
+        test = True
+        while test == True:
         #player1 move
-        player1Placement = input(f"{player1Name} where do you want to place your symbol? ")
-        player1move = theGame.move(player1Placement, player1Token)
+            player1Placement = input(f"{player1Name} where do you want to place your symbol? ")
+            player1move = theGame.move(player1Placement, player1Token)
+            if player1move == 'Space already taken':
+                print('Try Again')
+            else:
+                test = False
         print(theGame.__repr__())
 
         #check if player1 won, or if board is full
@@ -91,8 +97,14 @@ def main():
             return
 
         #player2 move
-        player2Placement = input(f"{player2Name} where do you want to place your symbol? ")
-        player1move = theGame.move(player2Placement, player2Token)
+        test = True
+        while test == True:
+            player2Placement = input(f"{player2Name} where do you want to place your symbol? ")
+            player2move = theGame.move(player2Placement, player2Token)
+            if player2move == 'Space already taken':
+                print('Try Again')
+            else:
+                test = False
         print(theGame.__repr__())
 
         #check if player2 won, or if board is full
@@ -104,18 +116,5 @@ def main():
         if boardIsFull is True:
             print(f"It's a Tie")
             return
-
-        
-       
-
 main()
-
-
-'''
-get player names
-player 1 goes first
-    place 'x' at some location
-    update that position in the row
-ask player where they want to 
-'''
 
