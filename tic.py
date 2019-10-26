@@ -7,10 +7,17 @@ class Game:
         return f' {self.row[0]} | {self.row[1]} | {self.row[2]}\n {self.row[3]} | {self.row[4]} | {self.row[5]}\n {self.row[6]} | {self.row[7]} | {self.row[8]}\n'
 
     def move(self, boardLocation, playertoken):
+        '''
+        tempList = ['1','2','3','4','5','6','7','8','9']
+        if boardLocation not in tempList:
+            print( f'Space already taken')
+            return
+        '''    
         for n, i in enumerate(self.row):
             if i == boardLocation:
                 self.row[n] = playertoken
         return self.row
+
     def calcWinner(self, token):
         if self.row[0] == token and self.row[1] == token and self.row[2] == token:
             return True
@@ -29,14 +36,15 @@ class Game:
         elif self.row[2] == token and self.row[4] == token and self.row[6] == token:
             return True
         else:
-            return
+            return False
+
     def fullBoard(self):
         tempList = ['1','2','3','4','5','6','7','8','9']
         check = any(item in self.row for item in tempList)
         if check is True:
-            return 
+            return
         else:
-            return f'The board is full'       
+            return True       
         
 class Player:
     def __init__(self, player, token):
@@ -55,12 +63,14 @@ def main():
     theGame = Game()
     #get player 1 info
     player1Name = Player.getPlayer(Player)
-    player1Token = Player.getToken(Player)
+    player1Token = 'X'
   
 
     #get player 2 info
     player2Name = Player.getPlayer(Player)
-    player2Token = Player.getToken(Player)
+    player2Token = 'O'
+
+    
 
     
 
@@ -72,9 +82,13 @@ def main():
 
         #check if player1 won, or if board is full
         player1Win = theGame.calcWinner(player1Token)
-        print(player1Win)
+        if player1Win is True:
+            print(f'{player1Name} is the Winner!')
+            return
         boardIsFull = theGame.fullBoard()
-        print(boardIsFull)
+        if boardIsFull is True:
+            print(f"It's a Tie")
+            return
 
         #player2 move
         player2Placement = input(f"{player2Name} where do you want to place your symbol? ")
@@ -83,9 +97,13 @@ def main():
 
         #check if player2 won, or if board is full
         player2Win = theGame.calcWinner(player2Token)
-        print(player2Win)
+        if player2Win is True:
+            print(f'{player2Name} is the Winner!')
+            return
         boardIsFull = theGame.fullBoard()
-        print(boardIsFull)
+        if boardIsFull is True:
+            print(f"It's a Tie")
+            return
 
         
        
